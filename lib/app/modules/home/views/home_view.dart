@@ -35,6 +35,17 @@ class HomeView extends GetView<HomeController> {
       ),
     );
   }
+  static CircleAvatar editIcon() {
+    return CircleAvatar(
+      radius: 25.0,
+      backgroundColor: LightColors.kBlue,
+      child: Icon(
+        Icons.edit_calendar,
+        size: 20.0,
+        color: Colors.white,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -175,7 +186,26 @@ class HomeView extends GetView<HomeController> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          subheading('Active Projects'),
+
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              subheading('Active Projects'),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => CalendarView()),
+                                  );
+                                },
+                                child: editIcon(),
+                              ),
+                            ],
+                          ),
+
+
                           SizedBox(height: 5.0),
                           Row(
                             children: <Widget>[
